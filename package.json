@@ -29,7 +29,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["yarn run format-code", "git add"]
+    "*.js": [
+      "yarn run format-code",
+      "git add"
+    ]
   },
   "jest": {
     "preset": "jest-expo"
