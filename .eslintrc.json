@@ -1,14 +1,17 @@
 {
-    "extends": "airbnb",
-    "env": {
-        "jest": true
-    },
-    "rules": {
-        "react/jsx-filename-extension": [
-            2,
-            {
-                "extensions": [".js", ".jsx"]
-            }
-        ]
-    }
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "func-names": ["error", "never"],
+    "react/require-default-props": 0
+  }
 }
