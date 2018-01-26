@@ -1,13 +1,16 @@
 const groupsData = {
   data: [
     {
-      groupSchedule: 'WOL - FR',
+      label: 'WOL - FR',
+      value: 'WOL - FR',
     },
     {
-      groupSchedule: 'WOL - VR',
+      label: 'WOL - VR',
+      value: 'WOL - VR',
     },
     {
-      groupSchedule: 'WOL - T',
+      label: 'WOL - T',
+      value: 'WOL - T',
     },
   ],
 };

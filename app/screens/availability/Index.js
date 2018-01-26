@@ -5,15 +5,14 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import { connectAlert } from '../../components/Alert';
-import { Calendar } from '../../components/Calendar';
-import { Container, Holder } from '../../components/Container';
-import { SeparatorClear } from '../../components/Separator';
-import { Week } from '../../components/Week';
+
 import { ButtonNavBar } from '../../components/Buttons';
+import { Calendar, Week } from '../../components/Calendar';
+import { Container, Holder } from '../../components/Container';
+import { Progress } from '../../components/Progress';
+import { SeparatorClear } from '../../components/Separator';
 
 import { setSelectedDate, startWeekChange } from '../../actions';
-
-import availabilityData from '../../data/availability';
 
 class Index extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -44,6 +43,20 @@ class Index extends Component {
   };
 
   render() {
+    // get start of week unix timestamp
+    const startOfWeek = moment(this.props.selectedDate)
+      .isoWeekday(1)
+      .startOf('isoweek');
+    const endOfWeek = moment(this.props.selectedDate)
+      .isoWeekday(1)
+      .endOf('isoweek');
+
+    // will be replaced by graphql calls
+
+    // eslint-disable-next-line
+    const filteredItems = this.props.items.filter(
+      item => item.startDateTime >= startOfWeek.unix() && item.startDateTime < endOfWeek.unix());
+
     return (
       <Container>
         <StatusBar barStyle="light-content" />
@@ -57,7 +70,8 @@ class Index extends Component {
           </ScrollView>
         </Holder>
         <SeparatorClear />
-        <Calendar items={availabilityData.data} onPressItem={this.onPressItem} />
+        {this.props.isChangingWeek && <Progress />}
+        <Calendar items={filteredItems} onPressItem={this.onPressItem} />
       </Container>
     );
   }
@@ -67,11 +81,17 @@ const mapStateToProps = state => ({
   authorized: state.user.authorized,
   selectedDate: state.availability.selectedDate,
   isChangingWeek: state.availability.isChangingWeek,
+  items: state.availability.items,
 });
 
 Index.propTypes = {
   dispatch: PropTypes.func.isRequired,
   selectedDate: PropTypes.instanceOf(moment),
+  isChangingWeek: PropTypes.bool,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    startDateTime: PropTypes.number.isRequired,
+    endDateTime: PropTypes.number.isRequired,
+  })),
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }),

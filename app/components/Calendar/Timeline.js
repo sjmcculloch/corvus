@@ -9,7 +9,7 @@ const Timeline = ({ startDateTime, endDateTime }) => (
   <View>
     <View style={styles.timelineRow}>
       <View style={styles.content}>
-        <Text style={styles.contentText}>{moment.unix(startDateTime).format('h:MM a')}</Text>
+        <Text style={styles.contentText}>{moment.unix(startDateTime).format('h:mm a')}</Text>
       </View>
       <View style={styles.timeline}>
         <View style={styles.line}>
@@ -21,7 +21,7 @@ const Timeline = ({ startDateTime, endDateTime }) => (
     </View>
     <View style={styles.timelineRow}>
       <View style={styles.content}>
-        <Text style={styles.contentText}>{moment.unix(endDateTime).format('h:MM a')}</Text>
+        <Text style={styles.contentText}>{moment.unix(endDateTime).format('h:mm a')}</Text>
       </View>
       <View style={styles.timeline}>
         <View style={styles.line}>

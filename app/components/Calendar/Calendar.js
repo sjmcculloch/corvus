@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
@@ -8,20 +8,27 @@ import { Separator } from '../Separator';
 
 import styles from './styles';
 
-const Calendar = ({ items, onPressItem }) => (
-  <ScrollView style={styles.calendar}>
-    {items.map(item => (
-      <View key={item.startDateTime}>
-        <DayHeader item={item} />
-        <TouchableOpacity onPress={() => onPressItem()}>
-          <CalendarRow item={item} />
-        </TouchableOpacity>
-      </View>
-    ))}
-  </ScrollView>
-);
-
 let currentDay;
+const Calendar = ({ items, onPressItem }) => {
+  currentDay = undefined;
+  return (
+    <ScrollView style={styles.calendar}>
+      {items.length === 0 ? (
+        <View style={styles.empty}>
+          <Text>No availability recorded for this week</Text>
+        </View>
+      ) : (
+        items.map(item => (
+          <View key={item.startDateTime}>
+            <DayHeader item={item} />
+            <CalendarRow item={item} onPressItem={() => onPressItem()} />
+          </View>
+        ))
+      )}
+    </ScrollView>
+  );
+};
+
 const DayHeader = ({ item }) => {
   let header = (
     <View style={styles.rowHeader}>

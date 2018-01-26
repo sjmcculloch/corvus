@@ -25,4 +25,18 @@ export default EStyleSheet.create({
     marginRight: 10,
     color: '#FFF',
   },
+  buttonRow: {
+    flexDirection: 'row',
+    paddingTop: 5,
+    paddingBottom: 5,
+    justifyContent: 'space-between',
+  },
+  buttonRowTitle: {
+    fontSize: 11,
+    fontWeight: '900',
+    paddingTop: 5,
+  },
+  buttonRowDescription: {
+    paddingBottom: 5,
+  },
 });

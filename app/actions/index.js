@@ -6,8 +6,18 @@ export const setSelectedDate = date => ({
   date,
 });
 
+export const setSelectedRequests = groups => ({
+  type: 'SET_SELECTED_REQUESTS',
+  groups,
+});
+
 export const startWeekChange = () => ({
   type: 'START_WEEK_CHANGE',
+});
+
+export const addAvailability = item => ({
+  type: 'ADD_AVAILABILITY',
+  item,
 });
 
 export const setUserName = name => ({

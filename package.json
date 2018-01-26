@@ -50,6 +50,8 @@
     "react-native-dropdownalert": "^3.1.2",
     "react-native-elements": "^0.18.5",
     "react-native-extended-stylesheet": "^0.8.0",
+    "react-native-modal-datetime-picker": "^4.13.0",
+    "react-native-select-multiple": "^1.2.0",
     "react-native-vector-icons": "^4.4.3",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",

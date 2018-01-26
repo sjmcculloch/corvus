@@ -1,10 +1,12 @@
-import Moment from 'moment';
+import moment from 'moment';
 
-const initialMoment = Moment().startOf('day');
+const initialMoment = moment().startOf('day');
 
 const initialState = {
   selectedDate: initialMoment,
   isChangingWeek: false,
+  selectedRequests: [],
+  items: [],
 };
 
 const availability = (state = initialState, action) => {
@@ -14,10 +16,21 @@ const availability = (state = initialState, action) => {
         selectedDate: action.date,
         isChangingWeek: false,
       });
+    case 'SET_SELECTED_REQUESTS':
+      return Object.assign({}, state, {
+        selectedRequests: action.groups,
+      });
     case 'START_WEEK_CHANGE':
       return Object.assign({}, state, {
         isChangingWeek: true,
       });
+    case 'ADD_AVAILABILITY':
+      return {
+        ...state,
+        items: [...state.items, action.item],
+        selectedRequests: [],
+        selectedDate: moment.unix(action.item.startDateTime),
+      };
     default:
       return state;
   }

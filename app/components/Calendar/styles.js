@@ -1,8 +1,26 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
+const dayButton = {
+  borderWidth: 0,
+  borderColor: 'rgba(0,0,0,0.2)',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 30,
+  height: 30,
+  backgroundColor: '#fff',
+  borderRadius: 30,
+};
+
 export default EStyleSheet.create({
   calendar: {
     width: '100%',
+  },
+  empty: {
+    backgroundColor: '#FFF',
+    marginTop: 20,
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   row: {
     flexDirection: 'row',
@@ -14,7 +32,7 @@ export default EStyleSheet.create({
   },
   rowDetail: {
     flexDirection: 'row',
-    marginLeft: 5,
+    marginRight: 5,
   },
   rowDetailItem: {
     margin: 5,
@@ -88,5 +106,37 @@ export default EStyleSheet.create({
     fontSize: 12,
     color: '#6B6B6B',
     textAlign: 'right',
+  },
+  week: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  day: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  dayLabel: {
+    marginBottom: 2,
+  },
+  dayButton,
+  dayButtonSelected: {
+    ...dayButton,
+    backgroundColor: '#f48603',
+  },
+  dayText: {
+    marginTop: 2,
+  },
+  dayTextSelected: {
+    color: 'white',
+  },
+  dayHasDetail: {
+    alignItems: 'center',
+    lineHeight: 2,
+  },
+  dayHasDetailSelected: {
+    alignItems: 'center',
+    lineHeight: 2,
+    color: '#fff',
   },
 });

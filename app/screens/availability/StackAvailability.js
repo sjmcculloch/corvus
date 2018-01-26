@@ -2,6 +2,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Index from './Index';
 import Edit from './Edit';
+import Requests from './Requests';
 import NavOptions from '../../config/options';
 
 const StackHome = StackNavigator(
@@ -11,6 +12,9 @@ const StackHome = StackNavigator(
     },
     Edit: {
       screen: Edit,
+    },
+    Requests: {
+      screen: Requests,
     },
   },
   {

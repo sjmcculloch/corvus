@@ -7,7 +7,7 @@ import styles from './styles';
 
 const ButtonNavBar = ({ icon, onPress }) => (
   <TouchableOpacity onPress={() => onPress()}>
-    <Icon name={icon} size={18} style={styles.buttonNavBarIcon} />
+    <Icon name={icon} size={24} style={styles.buttonNavBarIcon} />
   </TouchableOpacity>
 );
 
